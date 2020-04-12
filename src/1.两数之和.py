@@ -7,5 +7,9 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        测试提交分支111
+        for idx, item1 in enumerate(nums):
+            for idx2, item2 in enumerate(nums[idx+1:]):
+                if item1 + item2 == target:
+                    return [idx, idx2+idx+1]
+                
 # @lc code=end
