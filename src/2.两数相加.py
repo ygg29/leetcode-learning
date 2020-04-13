@@ -14,7 +14,7 @@
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         re = ListNode(0)
-        r=re
+        r=re 
         carry=0
         while(l1 or l2):
             x= l1.val if l1 else 0
