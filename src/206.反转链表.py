@@ -34,10 +34,10 @@
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        prev = None
+        prev = None # 新链表的头结点
         current = head
         while current != None:
-            tmpNext = current.next
+            tmpNext = current.next #新链表的头结点需要赋值给 current.next 记录链表剩下值， 
             current.next = prev
             prev = current
             current = tmpNext
