@@ -66,7 +66,15 @@
  * @param {number} n
  * @return {ListNode}
  */
+// 算法思想： 双指针， 一个指针先走 n 步， 然后两个指针同时出发。 需要借助虚拟头结点
 var removeNthFromEnd = function(head, n) {
+  var ret = new ListNode(0, head); // 虚拟头， 方便处理边界情况
+  var q = head; 
+  var p = ret; 
+  while(n--) q = q.next; // q 指针先向后走 n 步
+  while(q) p = p.next, q = q.next;  // p、q一起移动
+  p.next = p.next.next; // 删除 p.next
+  return ret.next; // 返回头结点
 
 };
 // @lc code=end
