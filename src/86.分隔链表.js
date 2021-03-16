@@ -59,24 +59,24 @@
  * @return {ListNode}
  */
 var partition = function(head, x) {
-  var r1 = new ListNode(0, null), r2 = new ListNode(0, null); // r1 记录小于 x 的链表  r2 记录大于 x 的链表
+  var r1 = new ListNode(0, null), r2 = new ListNode(0, null); // 虚拟头结点 r1 记录小于 x 的链表  r2 记录大于 x 的链表
   var p1=r1;
   var p2=r2; // 指向尾节点
   var p=head; // 记录头结点
   var q;
 
   while(p) {
-    q=p.next;
+    q=p.next; // 记录 next 结点
     if (p.val < x) {
       p.next = p1.next;// 指向空结点
-      p1.next = p;
-      p1 = p;
+      p1.next = p; // 链接上
+      p1 = p;  // p1 指针右移
     }else{
       p.next = p2.next;
       p2.next = p;
       p2 = p;
     }
-    p = q;
+    p = q; // 原始链表右移一位
   }
   p1.next = r2.next;
   return r1.next;
