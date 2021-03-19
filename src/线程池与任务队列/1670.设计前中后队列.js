@@ -73,7 +73,9 @@
  */
 
 // @lc code=start
-
+/**
+ * 思路： 两个双端队列实现一个前中后队列
+ */
 var FrontMiddleBackQueue = function() {
 
 };

@@ -61,7 +61,8 @@
  * @param {number} k
  */
 var MyCircularDeque = function(k) {
-
+  this.arr = new Array(k);
+  this.cnt = this.head = this.tail = 0;
 };
 
 /**
@@ -70,7 +71,12 @@ var MyCircularDeque = function(k) {
  * @return {boolean}
  */
 MyCircularDeque.prototype.insertFront = function(value) {
-
+  if (this.isFull()) return false;
+  this.head = this.head - 1;
+  if (this.head == -1) this.head = this.arr.length - 1;
+  this.arr[this.head] = value;
+  this.cnt += 1;
+  return true;
 };
 
 /**
@@ -79,7 +85,12 @@ MyCircularDeque.prototype.insertFront = function(value) {
  * @return {boolean}
  */
 MyCircularDeque.prototype.insertLast = function(value) {
-
+  if (this.isFull()) return false;
+  this.arr[this.tail] = value;
+  this.tail += 1;
+  if (this.tail == this.arr.length) this.tail = 0;
+  this.cnt += 1;
+  return true;
 };
 
 /**
@@ -87,7 +98,10 @@ MyCircularDeque.prototype.insertLast = function(value) {
  * @return {boolean}
  */
 MyCircularDeque.prototype.deleteFront = function() {
-
+  if (this.isEmpty()) return false;
+  this.head = (this.head + 1) % this.arr.length;
+  this.cnt -= 1;
+  return true;
 };
 
 /**
@@ -95,7 +109,10 @@ MyCircularDeque.prototype.deleteFront = function() {
  * @return {boolean}
  */
 MyCircularDeque.prototype.deleteLast = function() {
-
+  if (this.isEmpty()) return false;
+  this.tail = (this.tail - 1 + this.arr.length)  % this.arr.length;
+  this.cnt -= 1;
+  return true;
 };
 
 /**
@@ -103,7 +120,8 @@ MyCircularDeque.prototype.deleteLast = function() {
  * @return {number}
  */
 MyCircularDeque.prototype.getFront = function() {
-
+  if (this.isEmpty()) return -1;
+  return this.arr[this.head];
 };
 
 /**
@@ -111,7 +129,8 @@ MyCircularDeque.prototype.getFront = function() {
  * @return {number}
  */
 MyCircularDeque.prototype.getRear = function() {
-
+  if (this.isEmpty()) return -1;
+  return this.arr[(this.tail - 1 + this.arr.length) % this.arr.length];
 };
 
 /**
@@ -119,7 +138,7 @@ MyCircularDeque.prototype.getRear = function() {
  * @return {boolean}
  */
 MyCircularDeque.prototype.isEmpty = function() {
-
+  return this.cnt == 0;
 };
 
 /**
@@ -127,7 +146,7 @@ MyCircularDeque.prototype.isEmpty = function() {
  * @return {boolean}
  */
 MyCircularDeque.prototype.isFull = function() {
-
+  return this.cnt == this.arr.length;
 };
 
 /**

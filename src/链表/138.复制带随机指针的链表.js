@@ -95,8 +95,45 @@
  * @param {Node} head
  * @return {Node}
  */
+/**
+ * 算法难点： random 指针域的复制
+ * 1. 将链表的节点两两复制， 如原链表 1->2->3  =>  1->1->2->2->3->3
+ * 2. 将 random 指针域复指向复制出来的节点（即原节点的 next）
+ * 3. 将复制出来的节点独立出来
+ */
 var copyRandomList = function(head) {
-    
+  if (!head){return null;}
+  // 1. 
+  var p = head;
+  var q; // 复制出来的节点
+  while(p) {
+    q = new Node(p.val, p.next, p.random);
+    q.next = p.next;  
+    p.next = q;
+    p = q.next;
+  }
+  // 2.
+  p = head.next;
+  while(p) {
+    if (p.random){
+      p.random = p.random.next; // 将 q 指针指向复制出来的节点
+    }
+      (p = p.next) && (p = p.next)
+
+  }
+  // 3.
+  let newHead = head.next;
+  p = head;
+  while(p) {
+    q = p.next;
+    p.next = q.next;
+    if (p.next) {
+      q.next = p.next.next; 
+    }
+    p = p.next;
+    // q = q.next;
+  }
+  return newHead;  
 };
 // @lc code=end
 

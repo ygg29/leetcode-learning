@@ -74,6 +74,13 @@
  * @param {string} s
  * @return {boolean}
  */
+
+/**
+ * 
+ *  1.任意位置， 左括号 >= 右括号
+ *  2.最后一个位置，左括号 == 右括号
+ * 记录左右括号数量
+ */
 var isValid = function(s) {
 
 };

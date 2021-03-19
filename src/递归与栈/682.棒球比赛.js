@@ -85,7 +85,21 @@
  * @return {number}
  */
 var calPoints = function(ops) {
-
+  var s = [];
+  for(let i = 0; i < ops.length(); i++) {
+    if(ops.indexOf(i) == "+") {
+      let a = s.pop();
+      // s.pop;
+      // let b = s.top();
+      
+      s.push(a),
+      s.push(a+b);
+    }else if(ops.indexOf(i) == "D") {
+      s.push(2*s.top());
+    }else if(ops.indexOf(i) == "C") {
+      
+    }
+  }
 };
 // @lc code=end
 

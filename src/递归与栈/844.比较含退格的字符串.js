@@ -79,7 +79,9 @@
  * @return {boolean}
  */
 var backspaceCompare = function(S, T) {
-    
+    function transform(S) {
+      for ()
+    }
 };
 // @lc code=end
 

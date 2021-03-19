@@ -53,7 +53,14 @@
  * @return {boolean}
  */
 var validateStackSequences = function(pushed, popped) {
-
+  var s = [];
+  for(let i = 0, j = 0; i < popped.length(); i ++) {
+    while(j < pushed.length() && (s.length == 0 || s[-1] != popped[i])) {
+      s.push(pushed[j]);
+      j += 1;
+    }
+    if (s)
+  }
 };
 // @lc code=end
 

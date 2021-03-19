@@ -53,11 +53,11 @@
 // 递归实现
 var reverseList = function(head) {
   if (!head || !head.next) {return head;}
-  var newList = reverseList(head.next);
-  var newHead = head.next; // 获取翻转后 list 头结点
-  newHead.next = head; // 真正翻转
-  head.next = null; // 重要
-  return newList;
+  var newListHead = reverseList(head.next);
+  var tail = head.next; // 记录未翻转节点的尾节点
+  tail.next = head; // 将最后一个节点的指针翻转
+  head.next = null; // 原链表指向的尾节点的指针置空
+  return newListHead;   // 始终返回翻转后链表的头结点
 };
 // @lc code=end
 
