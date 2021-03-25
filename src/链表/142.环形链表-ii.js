@@ -83,6 +83,14 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+/** 
+ * 1. 设 slowPtr 走到环起点的时候为 a
+ * 2. 此时 fastPtr 走的距离为  2a， 则从起点到 fastPtr 的距离为 a
+ * 3. 设此时 fastPtr 到环起点（即到 slowPtr ）的距离为 x 
+ * 4. 若 fastPtr 想和 slowPtr 相遇（即追上 slowPtr），则此时 fastPtr 需要走 x 步（slowPtr 距离环起点 x）
+ * 5. fastPtr 与 slowPtr 的相遇位置距离循环结束到环起点 a(正好是 slow 到环起点的距离)
+ * 6. 此时将 fast 重新放回起点，然后 slow 与 fast 同时一次一步走， 下次相遇位置即为环起点
+*/
 var detectCycle = function(head) {
   if (head == null || head.next == null) {return null;}
   let slowPtr = fastPtr = head;
