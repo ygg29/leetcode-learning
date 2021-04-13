@@ -80,7 +80,7 @@
  */
 var backspaceCompare = function(S, T) {
     function transform(S) {
-      for ()
+      // for ()
     }
 };
 // @lc code=end
